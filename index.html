@@ -7,59 +7,137 @@
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
   <body>
     <div class="wrapper">
-      <header>
+      <header class="without-description">
         <h1>cdxr.github.io</h1>
         <p></p>
-
-
-        <p class="view"><a href="https://github.com/cdxr">View My GitHub Profile</a></p>
-
+        <p class="view"><a href="https://github.com/cdxr">View the Project on GitHub <small>cdxr</small></a></p>
+        <ul>
+          <li class="single"><a href="">View On <strong>GitHub</strong></a></li>
+        </ul>
       </header>
       <section>
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+        <h2>
+<a name="craigs-project-page" class="anchor" href="#craigs-project-page"><span class="octicon octicon-link"></span></a>Craig's Project Page</h2>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>Many of my projects are open source and hosted here on github. This page is an
+overview of my work in Haskell.</p>
 
 <h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a name="mutate" class="anchor" href="#mutate"><span class="octicon octicon-link"></span></a>mutate</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>My <a href="https://github.com/cdxr/haskell-mutate">mutate</a> package is an attempt to
+formalize the relationships between various types of mutable variables such
+as IORefs, STRefs, and TVars.</p>
+
+<p>The original motivation of this library was to be able to write operators and
+larger abstractions that would simply do what you expect with different kinds
+of mutable variables.</p>
+
+<p>This has proven more complicated than I originally anticipated. Types such as
+IORef, STRef, TVar, and StateVar support similar operations but have subtle
+semantic differences in regards to exceptions and concurrency. It is an ongoing
+project.</p>
 
 <h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<a name="hurl" class="anchor" href="#hurl"><span class="octicon octicon-link"></span></a>hurl</h3>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p><a href="https://github.com/cdxr/haskell-hurl">hurl</a>
+is a high-level interface to the Chipmunk physics library that is in
+early development. It is based on the <code>Hipmunk</code> package, which is a more or
+less straightforward (yet high-quality) binding to the C library.</p>
+
+<p>The purpose of <code>hurl</code> is to provide a more idiomatic and expressive API than
+<code>Hipmunk</code>. The most important goal in this regard is the use of functional
+reactive programming to structure collision handling rather than using
+callbacks.</p>
 
 <h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<a name="drawing-2-d-graphics" class="anchor" href="#drawing-2-d-graphics"><span class="octicon octicon-link"></span></a>drawing 2-D graphics</h3>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p><a href="https://github.com/cdxr/haskell-tooty">tooty</a>
+(pronounced like 2-D) is a simple DSL for 2-dimensional drawing in
+OpenGL. OpenGL is incredibly stateful, and often painful to use in Haskell.
+<code>tooty</code> offers a functional-style API for drawing, but does not try to
+encapsulate the details of OpenGL from the user.</p>
+
+<p>An earlier experiment of mine, <code>draw</code>, was a library similar in spirit to
+<code>tooty</code> but using SDL for graphics instead of OpenGL. In that library, drawing
+computations were expressed in terms of a monad <code>Context c a</code> where <code>c</code>
+constrained the capabilities of the drawing context. It was a fun concept
+and I might return to it in the future, but next time using type-level
+records to manage capabilities.</p>
 
 <h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<a name="experiments" class="anchor" href="#experiments"><span class="octicon octicon-link"></span></a>experiments</h3>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<p><a href="https://github.com/cdxr/tree-writer">tree-writer</a> defines
+Control.Monad.TreeWriter. It is a small specialized
+version of the WriterT monad transformer used to construct rose trees.
+It was a neat idea but I've found myself using <code>pipes</code> in all cases
+where I might have used <code>tree-writer</code>.</p>
+
+<p><a href="https://github.com/cdxr/weave">weave</a> defines the <code>Weave</code> type.
+A <code>Weave c a</code> is isormorphic to <code>[Either c a]</code>, and can be used as a
+traversable container of <code>a</code>s embedded in the monoid <code>c</code>.
+For example, <code>Weave Text Image</code> represents a <code>Text</code> value with <code>Image</code>s
+embedded throughout it. I created <code>weave</code> because it encapsulates a general
+pattern that I recognized in several of my projects, but I'm still determining
+its utility as a general abstraction.</p>
+
+<p><a href="https://github.com/cdxr/regular-tile-haskell">regular-tile</a>
+provides the typeclass <code>Tile</code>, a subclass of <code>Eq</code> and <code>Monoid</code>. It represents
+a regular tile in the 2-D plane (there are three types: triangles, squares, and
+hexagons). Expressing path-finding algorithms and other logic in terms of
+the <code>Tile</code> typeclasses enable their use in libraries for boardgame-style computer
+games that work in any of the three regular tilings.</p>
+
+<h4>
+<a name="command-line-interfaces" class="anchor" href="#command-line-interfaces"><span class="octicon octicon-link"></span></a>command line interfaces</h4>
+
+<p>I am planning to develop a monadic framework for developing interactive
+console interfaces. You would use the library to define a tree
+of possible application states. The tree could be used to generate the
+command line arguments for your program, and could also be used to generate an
+"interactive mode" that assists a user who is unfamiliar with the program.</p>
+
+<p>A few of my older projects were experiments working towards this goal:</p>
+
+<p><a href="https://github.com/cdxr/terminal">terminal</a>
+provides the mtl-style typeclass <code>MonadTerm</code>, which exposes the
+functionality of a console interface. This is currently implemented in terms of
+the <code>haskeline</code> package, but it could target other backends as well.</p>
+
+<p><code>input</code> was a brief experiment with the same concepts as <code>terminal</code> but
+expressed using operational monads.</p>
+
+<p><a href="https://github.com/cdxr/save">save</a>
+provides a type for managing application resources that should be saved
+between uses of the application. It uses type-level programming to track
+the modification of those resources and use that information implicitly for
+control flow. I wrote it while I was going through a bit of an "over-engineering"
+phase.</p>
+
+<p><a href="https://github.com/cdxr/command">command</a> was a simple monadic parser for
+structuring application-wide state changes in response to user input on the
+command line. One goal of the project was to create a composable type
+representing command line queries of the style (y/n). This was an old project
+that I abandoned, but I might go back and rewrite it in terms of a standard
+parser combinator library.</p>
       </section>
-      <footer>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
+    <footer>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
   </body>
 </html>
