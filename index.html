@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>cdxr.github.io by cdxr</title>
+    <title>cdxr.github.io</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -17,16 +17,9 @@
   <body>
     <div class="wrapper">
       <header class="without-description">
-        <h1>cdxr.github.io</h1>
-        <p></p>
-        <p class="view"><a href="https://github.com/cdxr">View the Project on GitHub <small>cdxr</small></a></p>
-        <ul>
-          <li class="single"><a href="">View On <strong>GitHub</strong></a></li>
-        </ul>
+        <h1>Craig's Haskell Projects</h1>
       </header>
       <section>
-        <h2>
-<a name="craigs-project-page" class="anchor" href="#craigs-project-page"><span class="octicon octicon-link"></span></a>Craig's Project Page</h2>
 
 <p>Many of my projects are open source and hosted here on github. This page is an
 overview of my work in Haskell.</p>
@@ -57,7 +50,7 @@ less straightforward (yet high-quality) binding to the C library.</p>
 
 <p>The purpose of <code>hurl</code> is to provide a more idiomatic and expressive API than
 <code>Hipmunk</code>. The most important goal in this regard is the use of functional
-reactive programming to structure collision handling rather than using
+reactive programming to structure collision handling rather than registering
 callbacks.</p>
 
 <h3>
@@ -69,11 +62,11 @@ OpenGL. OpenGL is incredibly stateful, and often painful to use in Haskell.
 <code>tooty</code> offers a functional-style API for drawing, but does not try to
 encapsulate the details of OpenGL from the user.</p>
 
-<p>An earlier experiment of mine, <code>draw</code>, was a library similar in spirit to
-<code>tooty</code> but using SDL for graphics instead of OpenGL. In that library, drawing
+<p>An earlier experiment of mine, <code>draw</code>, was a project with a similar
+goal that used SDL for graphics instead of OpenGL. In that library, drawing
 computations were expressed in terms of a monad <code>Context c a</code> where <code>c</code>
 constrained the capabilities of the drawing context. It was a fun concept
-and I might return to it in the future, but next time using type-level
+and I might return to it in the future, but next time I might use type-level
 records to manage capabilities.</p>
 
 <h3>
@@ -86,7 +79,7 @@ It was a neat idea but I've found myself using <code>pipes</code> in all cases
 where I might have used <code>tree-writer</code>.</p>
 
 <p><a href="https://github.com/cdxr/weave">weave</a> defines the <code>Weave</code> type.
-A <code>Weave c a</code> is isormorphic to <code>[Either c a]</code>, and can be used as a
+A <code>Weave c a</code> is isormorphic to <code>EitherT c [] a</code>, and can be used as a
 traversable container of <code>a</code>s embedded in the monoid <code>c</code>.
 For example, <code>Weave Text Image</code> represents a <code>Text</code> value with <code>Image</code>s
 embedded throughout it. I created <code>weave</code> because it encapsulates a general
@@ -96,15 +89,13 @@ its utility as a general abstraction.</p>
 <p><a href="https://github.com/cdxr/regular-tile-haskell">regular-tile</a>
 provides the typeclass <code>Tile</code>, a subclass of <code>Eq</code> and <code>Monoid</code>. It represents
 a regular tile in the 2-D plane (there are three types: triangles, squares, and
-hexagons). Expressing path-finding algorithms and other logic in terms of
-the <code>Tile</code> typeclasses enable their use in libraries for boardgame-style computer
-games that work in any of the three regular tilings.</p>
+hexagons).
 
 <h4>
 <a name="command-line-interfaces" class="anchor" href="#command-line-interfaces"><span class="octicon octicon-link"></span></a>command line interfaces</h4>
 
 <p>I am planning to develop a monadic framework for developing interactive
-console interfaces. You would use the library to define a tree
+console applications. You would use the library to define a tree
 of possible application states. The tree could be used to generate the
 command line arguments for your program, and could also be used to generate an
 "interactive mode" that assists a user who is unfamiliar with the program.</p>
