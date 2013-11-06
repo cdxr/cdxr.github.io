@@ -1,28 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="cdxr.github.io : " />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
     <title>cdxr.github.io</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
   </head>
-  <body>
-    <div class="wrapper">
-      <header class="without-description">
-        <h1>Craig's Haskell Projects</h1>
-      </header>
-      <section>
 
-<p>Many of my projects are open source and hosted here on github. This page is an
-overview of my work in Haskell.</p>
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/cdxr">View on GitHub</a>
+
+          <h1 id="project_title">cdxr.github.io</h1>
+          <h2 id="project_tagline"></h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h2>
+<a name="craigs-projects" class="anchor" href="#craigs-projects"><span class="octicon octicon-link"></span></a>Craig's Projects</h2>
+
+<p>Many of my projects are open source and <a href="https://github.com/cdxr">hosted on github</a>.
+This page is an overview of my work in Haskell.</p>
+
+<h3>
+<a name="hurl" class="anchor" href="#hurl"><span class="octicon octicon-link"></span></a>hurl</h3>
+
+<p><a href="https://github.com/cdxr/haskell-hurl">hurl</a>
+is a high-level interface to the Chipmunk physics library that is in
+early development. It is based on the <code>Hipmunk</code> package, which is a more or
+less straightforward (yet high-quality) binding to the C library.</p>
+
+<p>The purpose of <code>hurl</code> is to provide a more idiomatic and expressive API than
+<code>Hipmunk</code>. The most important goal in this regard is the use of functional
+reactive programming to structure collision handling rather than using
+callbacks.</p>
 
 <h3>
 <a name="mutate" class="anchor" href="#mutate"><span class="octicon octicon-link"></span></a>mutate</h3>
@@ -41,19 +63,6 @@ semantic differences in regards to exceptions and concurrency. It is an ongoing
 project.</p>
 
 <h3>
-<a name="hurl" class="anchor" href="#hurl"><span class="octicon octicon-link"></span></a>hurl</h3>
-
-<p><a href="https://github.com/cdxr/haskell-hurl">hurl</a>
-is a high-level interface to the Chipmunk physics library that is in
-early development. It is based on the <code>Hipmunk</code> package, which is a more or
-less straightforward (yet high-quality) binding to the C library.</p>
-
-<p>The purpose of <code>hurl</code> is to provide a more idiomatic and expressive API than
-<code>Hipmunk</code>. The most important goal in this regard is the use of functional
-reactive programming to structure collision handling rather than registering
-callbacks.</p>
-
-<h3>
 <a name="drawing-2-d-graphics" class="anchor" href="#drawing-2-d-graphics"><span class="octicon octicon-link"></span></a>drawing 2-D graphics</h3>
 
 <p><a href="https://github.com/cdxr/haskell-tooty">tooty</a>
@@ -62,11 +71,11 @@ OpenGL. OpenGL is incredibly stateful, and often painful to use in Haskell.
 <code>tooty</code> offers a functional-style API for drawing, but does not try to
 encapsulate the details of OpenGL from the user.</p>
 
-<p>An earlier experiment of mine, <code>draw</code>, was a project with a similar
-goal that used SDL for graphics instead of OpenGL. In that library, drawing
+<p>An earlier experiment of mine, <code>draw</code>, was a library similar in spirit to
+<code>tooty</code> but using SDL for graphics instead of OpenGL. In that library, drawing
 computations were expressed in terms of a monad <code>Context c a</code> where <code>c</code>
 constrained the capabilities of the drawing context. It was a fun concept
-and I might return to it in the future, but next time I might use type-level
+and I might return to it in the future, but next time using type-level
 records to manage capabilities.</p>
 
 <h3>
@@ -79,7 +88,7 @@ It was a neat idea but I've found myself using <code>pipes</code> in all cases
 where I might have used <code>tree-writer</code>.</p>
 
 <p><a href="https://github.com/cdxr/weave">weave</a> defines the <code>Weave</code> type.
-A <code>Weave c a</code> is isormorphic to <code>EitherT c [] a</code>, and can be used as a
+A <code>Weave c a</code> is isormorphic to <code>[Either c a]</code>, and can be used as a
 traversable container of <code>a</code>s embedded in the monoid <code>c</code>.
 For example, <code>Weave Text Image</code> represents a <code>Text</code> value with <code>Image</code>s
 embedded throughout it. I created <code>weave</code> because it encapsulates a general
@@ -89,13 +98,15 @@ its utility as a general abstraction.</p>
 <p><a href="https://github.com/cdxr/regular-tile-haskell">regular-tile</a>
 provides the typeclass <code>Tile</code>, a subclass of <code>Eq</code> and <code>Monoid</code>. It represents
 a regular tile in the 2-D plane (there are three types: triangles, squares, and
-hexagons).
+hexagons). Expressing path-finding algorithms and other logic in terms of
+the <code>Tile</code> typeclasses enable their use in libraries for boardgame-style computer
+games that work in any of the three regular tilings.</p>
 
 <h4>
 <a name="command-line-interfaces" class="anchor" href="#command-line-interfaces"><span class="octicon octicon-link"></span></a>command line interfaces</h4>
 
 <p>I am planning to develop a monadic framework for developing interactive
-console applications. You would use the library to define a tree
+console interfaces. You would use the library to define a tree
 of possible application states. The tree could be used to generate the
 command line arguments for your program, and could also be used to generate an
 "interactive mode" that assists a user who is unfamiliar with the program.</p>
@@ -110,13 +121,6 @@ the <code>haskeline</code> package, but it could target other backends as well.<
 <p><code>input</code> was a brief experiment with the same concepts as <code>terminal</code> but
 expressed using operational monads.</p>
 
-<p><a href="https://github.com/cdxr/save">save</a>
-provides a type for managing application resources that should be saved
-between uses of the application. It uses type-level programming to track
-the modification of those resources and use that information implicitly for
-control flow. I wrote it while I was going through a bit of an "over-engineering"
-phase.</p>
-
 <p><a href="https://github.com/cdxr/command">command</a> was a simple monadic parser for
 structuring application-wide state changes in response to user input on the
 command line. One goal of the project was to create a composable type
@@ -125,10 +129,15 @@ that I abandoned, but I might go back and rewrite it in terms of a standard
 parser combinator library.</p>
       </section>
     </div>
-    <footer>
-      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
-    </footer>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
     
+
   </body>
 </html>
